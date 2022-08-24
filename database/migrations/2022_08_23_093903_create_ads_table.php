@@ -46,11 +46,11 @@ return new class extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
 
-            $table->string('phone');
+            $table->string('mobile');
             $table->string('price');
             $table->text('description');
 
-            $table->boolean('hide_phone')->default(false);
+            $table->boolean('hide_mobile')->default(false);
 
             $table->timestamps();
         });

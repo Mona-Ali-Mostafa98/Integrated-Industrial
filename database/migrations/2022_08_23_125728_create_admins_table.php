@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('mobile')->nullable();
             $table->text('image')->nullable();
-            $table->text('role_name');
+            $table->text('roles_name');
             $table->enum('status', ['غير مفعل' , 'مفعل'])->default('مفعل');
             $table->timestamps();
         });

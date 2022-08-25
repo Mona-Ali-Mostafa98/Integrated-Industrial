@@ -28,7 +28,7 @@ return new class extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade')->nullable();
 
-            $table->enum('category_order', ['main_category' , 'sub_category','third_category'])->default('main_category');
+            $table->enum('category_order', ['قسم رئيسى' , 'قسم فرعى','قسم فرعى من قسم فرعى أخر'])->default('قسم رئيسى');
 
             $table->enum('status', ['عرض' , 'أخفاء'])->default('عرض');
 

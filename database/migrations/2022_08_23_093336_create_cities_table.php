@@ -22,7 +22,7 @@ return new class extends Migration
                     ->onDelete('cascade');
 
             $table->string('city_name')->unique();
-            $table->enum('status', ['عرض' , 'أخفاء'])->default('عرض');
+
             $table->timestamps();
         });
     }

@@ -28,7 +28,6 @@ return new class extends Migration
 
             $table->string('region_name')->unique();
 
-            $table->enum('status', ['عرض' , 'أخفاء'])->default('عرض');
             $table->timestamps();
         });
     }

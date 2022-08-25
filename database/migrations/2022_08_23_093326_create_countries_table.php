@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('country_name')->unique();
-            $table->enum('status', ['عرض' , 'أخفاء'])->default('عرض');
+            $table->string('country_code');
 
             $table->timestamps();
         });

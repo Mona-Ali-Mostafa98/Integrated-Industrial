@@ -16,7 +16,6 @@
 <script src="{{ asset('admin/vendor/simple-datatables/simple-datatables.js') }}"></script>
 <script src="{{ asset('admin/vendor/tinymce/tinymce.min.js') }}"></script>
 
-@stack('scripts')
 
 <!-- Template Main JS File -->
 <script src="{{ asset('admin/js/main.js') }}"></script>
@@ -25,6 +24,8 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@stack('scripts')
 
 <script type="text/javascript">
     $('.show_confirm').click(function(event) {

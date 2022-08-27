@@ -23,6 +23,18 @@ class User extends Authenticatable
         'address', 'address_on_map' , 'details' , 'status'
     ];
 
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id')->withDefault();
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id')->withDefault();
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

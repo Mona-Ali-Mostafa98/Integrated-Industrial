@@ -34,6 +34,12 @@ class User extends Authenticatable
         return $this->belongsTo(City::class, 'city_id', 'id')->withDefault();
     }
 
+    // add accessor to model user to return full name
+    public function getFullNameAttribute()
+    {
+        return "$this->first_name". " " ."$this->last_name" ;
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

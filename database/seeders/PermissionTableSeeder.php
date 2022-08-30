@@ -15,6 +15,8 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'الصفحه الرئيسيه',
+
             'الاعدادات',
             'عرض الاعدادات',
             'تعديل الاعدادات',

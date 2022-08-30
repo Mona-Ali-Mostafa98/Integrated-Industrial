@@ -14,6 +14,21 @@
                 });
                 alert(result)
             });
+
+            jQuery('#city_id').change(function() {
+                let city_id = jQuery(this).val();
+                // alert(city_id);
+                jQuery.ajax({
+                    url: '/admin/get_region_by_city',
+                    type: 'post',
+                    data: 'city_id=' + city_id + '&_token={{ csrf_token() }}',
+                    success: function(result) {
+                        jQuery('#region_id').html(result)
+                    }
+                });
+                alert(result)
+            });
+
         });
     </script>
 @endpush

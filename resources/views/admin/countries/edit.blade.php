@@ -16,7 +16,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fs-4 mb-3">تعديل على دوله : {{ }}</h5>
+                            <h5 class="card-title fs-4 mb-3">تعديل على دوله : {{ $country->country_name }}</h5>
                             <form method="POST" action="{{ route('admin.countries.update', $country->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf

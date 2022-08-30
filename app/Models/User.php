@@ -34,6 +34,12 @@ class User extends Authenticatable
         return $this->belongsTo(City::class, 'city_id', 'id')->withDefault();
     }
 
+    public function ads()
+    {
+        return $this->hasMany(Ad::class, 'user_id', 'id');
+    }
+
+
     // add accessor to model user to return full name
     public function getFullNameAttribute()
     {

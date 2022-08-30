@@ -16,4 +16,10 @@ class City extends Model
         return $this->belongsTo(Country::class, 'country_id', 'id')->withDefault();
     }
 
+    public function cities()
+    {
+        return $this->hasMany(Region::class, 'regi_id', 'id');
+    }
+
+
 }

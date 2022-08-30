@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->foreignId('ad_id')
                     ->constrained('ads')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
 

@@ -23,7 +23,7 @@ return new class extends Migration
                     ->constrained('ads')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->enum('status', ['خطأ فى السعر', 'أعلان غير لائق', 'أعلان غير  مناسب, أحتيال']);
+            $table->enum('status', ['خطأ فى السعر', 'أعلان غير لائق', 'أعلان غير  مناسب' , 'أحتيال']);
             $table->timestamps();
         });
     }

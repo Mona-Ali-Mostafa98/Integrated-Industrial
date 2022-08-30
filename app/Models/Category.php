@@ -21,4 +21,12 @@ class Category extends Model
             'name' => 'No Parent'
         ]);
     }
+
+
+    public function ads()
+    {
+        return $this->hasMany(Ad::class, 'category_id', 'id');
+    }
+
+
 }

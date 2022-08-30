@@ -20,6 +20,17 @@ use Throwable;
 class AdController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:قائمة الاعلانات', ['only' => ['index']]);
+        $this->middleware('permission:عرض أعلان', ['only' => ['show']]);
+        $this->middleware('permission:أضافة أعلان', ['only' => ['create', 'user_add_ad_view' ,'store']]);
+        $this->middleware('permission:تعديل أعلان', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف أعلان', ['only' => ['destroy']]);
+    }
+
+
+
     public function index()
     {
         $ads = Ad::paginate();

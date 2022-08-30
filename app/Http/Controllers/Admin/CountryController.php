@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 class CountryController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:قائمة الدول', ['only' => ['index']]);
+        $this->middleware('permission:عرض دوله', ['only' => ['show']]);
+        $this->middleware('permission:أضافة دوله', ['only' => ['create','store']]);
+        $this->middleware('permission:تعديل دوله', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف دوله', ['only' => ['destroy']]);
+    }
+
+
     public function index()
     {
         $countries = Country::orderBy('country_name','asc')->paginate();

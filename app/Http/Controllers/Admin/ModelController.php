@@ -8,6 +8,17 @@ use App\Models\AdModel;
 
 class ModelController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission:قائمة الموديلات', ['only' => ['index']]);
+        $this->middleware('permission:عرض موديل', ['only' => ['show']]);
+        $this->middleware('permission:أضافة موديل', ['only' => ['create','store']]);
+        $this->middleware('permission:تعديل موديل', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف موديل', ['only' => ['destroy']]);
+    }
+
+
     public function index()
     {
         $models = AdModel::orderBy('year','asc')->paginate();

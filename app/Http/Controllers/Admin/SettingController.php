@@ -13,6 +13,15 @@ class SettingController extends Controller
 {
     use UploadImageTrait;
 
+        function __construct()
+    {
+        $this->middleware('permission:الاعدادات', ['only' => ['index']]);
+        $this->middleware('permission:عرض الاعدادات', ['only' => ['show']]);
+        $this->middleware('permission:تعديل الاعدادات', ['only' => ['edit','update']]);
+    }
+
+
+
     public function index()
     {
         $setting = Setting:: first() ;

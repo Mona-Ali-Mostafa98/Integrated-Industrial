@@ -11,6 +11,16 @@ use Illuminate\Http\Request;
 class CityController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:قائمة المدن', ['only' => ['index']]);
+        $this->middleware('permission:عرض مدينه', ['only' => ['show']]);
+        $this->middleware('permission:أضافة مدينه', ['only' => ['create','store']]);
+        $this->middleware('permission:تعديل مدينه', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف مدينه', ['only' => ['destroy']]);
+    }
+
+
     public function index()
     {
         $cities = City::orderBy('city_name','asc')->paginate();

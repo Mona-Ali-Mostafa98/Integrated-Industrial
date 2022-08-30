@@ -12,6 +12,17 @@ use Illuminate\Http\Request;
 class RegionController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:قائمة المناطق', ['only' => ['index']]);
+        $this->middleware('permission:عرض منطقه', ['only' => ['show']]);
+        $this->middleware('permission:أضافة منطقه', ['only' => ['create','store']]);
+        $this->middleware('permission:تعديل منطقه', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف منطقه', ['only' => ['destroy']]);
+    }
+
+
+
     public function index()
     {
         $regions = Region::orderBy('region_name','asc')->paginate();

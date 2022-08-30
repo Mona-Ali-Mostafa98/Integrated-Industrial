@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:الصفحه الرئيسيه', ['only' => ['dashboard']]);
+    }
+
     public function dashboard(){
         $users_count = User:: count();
         $admins_count = Admin:: count();

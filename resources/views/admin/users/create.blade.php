@@ -51,4 +51,4 @@
 
     </main><!-- End #main -->
 @endsection
-@include('admin.script_of_get_city_by_country')
+@include('admin.script_of_get_city_region_by_ajax')

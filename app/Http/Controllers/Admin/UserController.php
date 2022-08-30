@@ -5,8 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Ad;
 use App\Models\City;
+use App\Models\Comment;
+use App\Models\Complain;
 use App\Models\Country;
+use App\Models\Favorite;
+use App\Models\Question;
+use App\Models\QuestionReply;
 use App\Models\User;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -45,7 +51,14 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('admin.users.show', compact('user'));
+        $user_ads = Ad::where('user_id' , $user->id)->get();
+        $user_questions = Question::where('user_id' , $user->id)->simplePaginate();
+        $user_replies = QuestionReply::where('user_id' , $user->id)->simplePaginate();
+        $user_favorites = Favorite::where('user_id' , $user->id)->with('user')->with('ad')->simplePaginate();
+        $user_comments = Comment::where('user_id' , $user->id)->with('user')->with('ad')->simplePaginate();
+        $user_complains = Complain::where('user_id' , $user->id)->with('user')->with('ad')->simplePaginate();
+
+        return view('admin.users.show', compact('user' , 'user_ads', 'user_questions' , 'user_replies' , 'user_favorites' , 'user_comments' , 'user_complains'));
     }
 
     public function edit(User $user)
@@ -98,6 +111,13 @@ class UserController extends Controller
 		}
 		echo $html;
 	}
+
+    public function user_question(User $user)
+    {
+        $user_questions = Question::where('user_id' , $user->id)->simplePaginate();
+        dd($user_questions);
+        return view('admin.users.index', compact('user_questions'));
+    }
 
 
 }

@@ -52,15 +52,15 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-start">
-                                                    @can('عرض سليدر')
+                                                    @can('عرض أعلان')
                                                         <a href="{{ route('admin.ads.show', $ad->id) }}"
                                                             class=" btn btn-sm btn-success">عرض</a>
                                                     @endcan
-                                                    @can('تعديل سليدر')
+                                                    @can('تعديل أعلان')
                                                         <a href="{{ route('admin.ads.edit', $ad->id) }}"
                                                             class=" me-2 btn btn-sm btn-primary">تعديل</a>
                                                     @endcan
-                                                    @can('حذف سليدر')
+                                                    @can('حذف أعلان')
                                                         <form class=" me-2 form-inline" method="post"
                                                             action="{{ route('admin.ads.destroy', $ad->id) }}">
                                                             @csrf

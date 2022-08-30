@@ -18,8 +18,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fs-4 mb-3">تعديل حساب المستخدم : {{ $user->first_name }}
-                                {{ $user->last_name }}</h5>
+                            <h5 class="card-title fs-4 mb-3">تعديل حساب المستخدم : {{ $user->full_name }}</h5>
                             <form method="POST" action="{{ route('admin.users.update', $user->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -41,4 +40,4 @@
     </main><!-- End #main -->
 @endsection
 
-@include('admin.script_of_get_city_by_country')
+@include('admin.script_of_get_city_region_by_ajax')

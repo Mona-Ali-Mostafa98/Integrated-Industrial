@@ -39,8 +39,7 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td class="text-success fw-bold">{{ $user->first_name }} {{ $user->last_name }}
-                                            </td>
+                                            <td class="text-success fw-bold">{{ $user->full_name }} </td>
                                             <td>{{ $user->mobile }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}

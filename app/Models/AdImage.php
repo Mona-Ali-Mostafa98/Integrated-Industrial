@@ -10,4 +10,10 @@ class AdImage extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+
+    public function ad()
+    {
+        return $this->belongsTo(Ad::class, 'ad_id', 'id')->withDefault();
+    }
 }

@@ -26,8 +26,8 @@
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-success fw-bold">الصور</div>
                                     <div class="col-lg-9 col-md-8">
-                                        <img id="image" src="{{ asset('storage/' . $category->category_image) }}"
-                                            alt="" height="100" width="150">
+                                        <img id="image" src="{{ $category->category_image_url }}" alt=""
+                                            height="100" width="150">
                                     </div>
                                 </div>
 

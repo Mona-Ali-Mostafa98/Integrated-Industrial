@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -29,4 +30,22 @@ class Category extends Model
     }
 
 
+        // Accessors use to return full url of category_image to use it in api
+    // $category->category_image_url
+    public function getCategoryImageUrlAttribute()
+    {
+        if (Str::startsWith($this->category_image, ['http://', 'https://'])) {
+            return $this->category_image;
+        }
+        return asset('storage/' . $this->category_image);
+    }
+
+    // return complete category_image_url of category_image in api request to use it in mobile app
+    protected $appends = [
+        'category_image_url',
+    ];
+
+    protected $hidden = [
+        'category_image',   //hidden image and replace it with complete category_image_url
+    ];
 }

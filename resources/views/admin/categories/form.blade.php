@@ -76,8 +76,8 @@
             <p class="invalid-feedback">{{ $message }}
             </p>
         @enderror
-        <img id="image" src="{{ asset('storage/' . $category->category_image) }}"
-            style="height: 100px; width: 150px;" alt="no category_image uploaded">
+        <img id="image" src="{{ $category->category_image_url }}" style="height: 100px; width: 150px;"
+            alt="no category_image uploaded">
     </div>
 </div>
 

@@ -43,8 +43,8 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             {{-- <td>{{ $category->id }}</td> --}}
-                                            <td><img src="{{ asset('storage/' . $category->category_image) }}"
-                                                    alt="" height="60" width="60"></td>
+                                            <td><img src="{{ $category->category_image_url }}" alt="" height="60"
+                                                    width="60"></td>
                                             <td class="text-success fw-bold">{{ $category->category_name }}</td>
                                             <td> {{ $category->parent->category_name ?? 'قسم رئيسى' }}</td>
                                             <td>{{ $category->status }}</td>

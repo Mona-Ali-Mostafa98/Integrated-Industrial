@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,21 @@ class User extends Authenticatable
         'address', 'address_on_map' , 'details' , 'status'
     ];
 
+
+    // Accessors use to return full url of image to use it in api
+    // $user->profile_image_url
+    public function getProfileImageUrlAttribute()
+    {
+        if (Str::startsWith($this->profile_image, ['http://', 'https://'])) {
+            return $this->profile_image;
+        }
+        return asset('storage/' . $this->profile_image);
+    }
+
+    // return complete profile_image_url of profile_image in api request to use it in mobile app
+    protected $appends = [
+        'profile_image_url',
+    ];
 
     public function country()
     {
@@ -55,6 +71,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'profile_image',   //hidden image and replace it with complete profile_image_url
     ];
 
     /**

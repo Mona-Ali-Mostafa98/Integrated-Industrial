@@ -28,6 +28,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">صورة البروفيل</th>
                                         <th scope="col">الأسم</th>
                                         <th scope="col">رقم الهاتف</th>
                                         <th scope="col">البريد الالكترونى</th>
@@ -39,6 +40,8 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td><img id="image" src="{{ $user->profile_image_url }}" alt=""
+                                                    height="60" width="60"></td>
                                             <td class="text-success fw-bold">{{ $user->full_name }} </td>
                                             <td>{{ $user->mobile }}</td>
                                             <td>{{ $user->email }}</td>

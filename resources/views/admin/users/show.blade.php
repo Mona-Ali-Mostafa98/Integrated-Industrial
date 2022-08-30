@@ -45,8 +45,8 @@
 
                                     @if ($user->profile_image)
                                         <div class="col-lg-9 col-md-8">
-                                            <img id="image" src="{{ asset('storage/' . $user->profile_image) }}"
-                                                alt="" height="100" width="150">
+                                            <img id="image" src="{{ $user->profile_image_url }}" alt=""
+                                                height="100" width="150">
                                         </div>
                                     @else
                                         المستخدم ليس له صورة غلاف

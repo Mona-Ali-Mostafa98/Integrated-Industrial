@@ -26,8 +26,8 @@
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-success fw-bold">اللوجو</div>
                                     <div class="col-lg-9 col-md-8">
-                                        <img id="image" src="{{ asset('storage/' . $setting->logo) }}" alt=""
-                                            height="100" width="150">
+                                        <img id="image" src="{{ $setting->logo_url }}" alt="" height="100"
+                                            width="150">
                                     </div>
                                 </div>
 

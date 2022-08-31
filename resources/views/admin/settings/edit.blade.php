@@ -31,8 +31,8 @@
                                         @error('logo')
                                             <p class="invalid-feedback">{{ $message }}</p>
                                         @enderror
-                                        <img id="logo" src="{{ asset('storage/' . $setting->logo) }}"
-                                            style="height: 100px; width: 150px;" alt="no logo uploaded">
+                                        <img id="logo" src="{{ $setting->logo_url }}"
+                                            style="height: 100px; width: 150px;" alt="لم يتم رفع لوجو مسبقا">
                                     </div>
                                 </div>
 

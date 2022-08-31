@@ -30,8 +30,8 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ $setting->id }}</td>
-                                        <td><img src="{{ asset('storage/' . $setting->logo) }}"
-                                                style="height: 100px; width: 150px;" alt=""></td>
+                                        <td><img src="{{ $setting->logo_url }}" style="height: 100px; width: 150px;"
+                                                alt=""></td>
                                         <td>{{ $setting->title }}</td>
                                         <td>{{ $setting->created_at?->translatedFormat('l , j F Y') ?? 'N/A' }}</td>
                                         <td>{{ $setting->updated_at?->translatedFormat('l , j F Y') ?? 'N/A' }}</td>

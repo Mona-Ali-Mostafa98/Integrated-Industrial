@@ -10,4 +10,9 @@ class AdModel extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    // Hide this properties to not return it in the API request
+    protected $hidden = [
+        'created_at' , 'updated_at',
+    ];
 }

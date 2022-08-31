@@ -36,7 +36,7 @@
                                             <td class="text-success fw-bold">{{ $contact->name }}</td>
                                             <td>{{ $contact->mobile }}</td>
                                             <td>{{ $contact->email }}</td>
-                                            <td>{{ $contact->created_at }}</td>
+                                            <td>{{ $contact->created_at->diffForHumans(now()) }}</td>
                                             <td class="d-flex justify-content-start">
                                                 @can('عرض تواصل معنا')
                                                     <a href="{{ route('admin.contact.show', $contact->id) }}"

@@ -25,7 +25,7 @@
 
                                 <div class="row mb-2">
                                     <div class="col-lg-3 col-md-4 label text-success fw-bold">الاسم</div>
-                                    <div class="col-lg-9 col-md-8">{{ $contact->user->full_name }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ $contact->name }}</div>
                                 </div>
 
                                 <div class="row mb-2">

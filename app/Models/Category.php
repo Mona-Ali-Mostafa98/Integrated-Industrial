@@ -19,7 +19,8 @@ class Category extends Model
 
     public function parent(){
         return $this->belongsTo(Category::class, 'parent_id', 'id')->withDefault([
-            'name' => 'No Parent'
+            'name' => 'No Parent Category',
+            "category_image" => 'No Parent Category Image'
         ]);
     }
 
@@ -45,7 +46,9 @@ class Category extends Model
         'category_image_url',
     ];
 
+    // Hide this properties to not return it in the API request
     protected $hidden = [
         'category_image',   //hidden image and replace it with complete category_image_url
+        'created_at' , 'updated_at',
     ];
 }

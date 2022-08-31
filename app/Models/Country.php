@@ -17,5 +17,9 @@ class Country extends Model
         return $this->hasMany(City::class, 'country_id', 'id');
     }
 
+    // Hide this properties to not return it in the API request
+    protected $hidden = [
+        'created_at' , 'updated_at',
+    ];
 
 }

@@ -21,4 +21,9 @@ class Region extends Model
         return $this->belongsTo(City::class, 'city_id', 'id')->withDefault();
     }
 
+    // Hide this properties to not return it in the API request
+    protected $hidden = [
+        'created_at' , 'updated_at',
+    ];
+
 }

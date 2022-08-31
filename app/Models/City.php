@@ -16,10 +16,15 @@ class City extends Model
         return $this->belongsTo(Country::class, 'country_id', 'id')->withDefault();
     }
 
-    public function cities()
+    public function regions()
     {
-        return $this->hasMany(Region::class, 'regi_id', 'id');
+        return $this->hasMany(Region::class, 'region_id', 'id');
     }
+
+    // Hide this properties to not return it in the API request
+    protected $hidden = [
+        'created_at' , 'updated_at',
+    ];
 
 
 }

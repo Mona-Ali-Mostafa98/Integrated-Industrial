@@ -27,11 +27,11 @@ class UpdateCategoryRequest extends FormRequest
     {
         $id = $this -> route ('category'); // Gets the ID currently excluded, where category is a parameter in route {}
         return [
-            'category_name' =>['required','string','max:255' , Rule::unique('categories')->ignore($this->category)],
-            'category_image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_name' =>['sometimes' , 'required','string','max:255' , Rule::unique('categories')->ignore($this->category)],
+            'category_image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'parent_id' => ['nullable','exists:categories,id',new ParentCategoryRule($id)], //
-            'category_order'=>['nullable' ,  Rule::in(['main_category', 'sub_category' ,'third_category'])],
-            'status'=>['required' ,  Rule::in(['عرض', 'أخفاء'])]
+            'category_order'=>['nullable' ,  Rule::in(['قسم رئيسى', 'قسم فرعى' ,'قسم فرعى من قسم فرعى أخر'])],
+            'status'=>['sometimes' , 'required' ,  Rule::in(['عرض', 'أخفاء'])]
             ];
     }
 

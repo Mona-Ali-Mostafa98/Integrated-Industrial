@@ -24,12 +24,12 @@ class UpdateSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'title' => 'required|string|max:255',
-            'about_us' => 'required|string',
-            'mobile' => 'nullable|string',
-            'email' => 'required|email|max:255|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
-            'forbidden_ads' => 'required|string',
+            'logo' => ['sometimes','required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'title' => ['sometimes','required','string','max:255'],
+            'about_us' => ['sometimes','required','string'],
+            'mobile' => ['nullable','string'],
+            'email' => ['sometimes','required','email','max:255','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+            'forbidden_ads' => ['sometimes','required','string'],
         ];
     }
 

@@ -26,24 +26,20 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|string|max:20',
-            'last_name' => 'required|string|max:20',
-            'email' => ['required' ,'email','max:255' , Rule::unique('users')->ignore($this->user)],
-            'mobile' => ['required','string', 'min:9' ,'max:14',
+            'first_name' => ['sometimes','required','string','max:20'],
+            'last_name' => ['sometimes','required','string','max:20'],
+            'email' => ['sometimes' , 'required' ,'email','max:255' ,
                         Rule::unique('users')->ignore($this->user)],
-            // 'password' => ['required', Password::min(8) ,'max:20'],           //Password::min(8)    Hash::make($data['password']
-
-            'country_id' => ['required','exists:countries,id'],
-            'city_id' => ['required','exists:cities,id'],
-
-            'address' => 'nullable|string|max:255',
-            'address_on_map' => 'nullable|url',
-
-            'details' => 'nullable|string|max:255',
-
-            'status' => ['required', Rule::in(['مفعل' , 'غير مفعل'])] ,
-
-            'profile_image' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'mobile' => ['sometimes' , 'required','string', 'min:9' ,'max:14',
+                        Rule::unique('users')->ignore($this->user)],
+            'country_id' => ['sometimes' , 'required','exists:countries,id'],
+            'city_id' => ['sometimes' , 'required','exists:cities,id'],
+            'address' => ['nullable','string','max:255'],
+            'address_on_map' => ['nullable','url'],
+            'details' => ['nullable','string','max:255'],
+            'status' => ['sometimes' , 'required', Rule::in(['مفعل' , 'غير مفعل'])] ,
+            'profile_image' =>[ 'sometimes','required','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            // 'password' => ['sometimes' , 'required', Password::min(8) ,'max:20'],           //Password::min(8)    Hash::make($data['password']
         ];
     }
     public function messages()

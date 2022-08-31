@@ -24,17 +24,17 @@ class UpdateAdRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => ['required','exists:categories,id'],
-            'user_id' => ['required','exists:users,id'],
-            'city_id' => ['required','exists:cities,id'],
-            'region_id' => ['required','exists:regions,id'],
-            'subcategory_id' => ['required','exists:categories,id'],
-            'model_id' => ['required','exists:ad_models,id'],
-            'mobile' => ['required','string', 'min:9' ,'max:14'],
-            'price' => ['required','integer'],
-            'description' => ['required','string', 'max:1000' ],
-            'image' => 'sometimes|nullable|array|max:2048',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'category_id' => ['sometimes','required','exists:categories,id'],
+            'user_id' => ['sometimes','required','exists:users,id'],
+            'city_id' => ['sometimes','required','exists:cities,id'],
+            'region_id' => ['sometimes','required','exists:regions,id'],
+            'subcategory_id' => ['sometimes','required','exists:categories,id'],
+            'model_id' => ['sometimes','required','exists:ad_models,id'],
+            'mobile' => ['sometimes','required','string', 'min:9' ,'max:14'],
+            'price' => ['sometimes','required','integer'],
+            'description' => ['sometimes','required','string', 'max:1000' ],
+            'image' => ['sometimes','required','array','max:2048'],
+            'image.*' => ['image','mimes:jpeg,png,jpg,gif,svg'],
             'hide_mobile' =>'nullable'
         ];
     }

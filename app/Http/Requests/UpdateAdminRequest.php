@@ -26,12 +26,13 @@ class UpdateAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:10|max:255',
-            'email' => ['required' ,'email','max:255' , Rule::unique('admins')->ignore($this->admin)],
-            'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'mobile' => ['nullable','string', 'min:9' ,'max:14',Rule::unique('admins')->ignore($this->admin)],  //'regex:/^(009665|9665|\+9665|05|5)([013456789])([0-9]{7})$/' , =>(009665|9665|\+9665|05|5)  ((5|0|3|6|4|9|1|8|7)مفتاح الشركه) (خانات)
-            'status' => ['required', Rule::in(['مفعل' , 'غير مفعل'])] ,
-            'roles_name' => 'required|array'        ];
+            'name' => ['sometimes','required','string','min:10','max:255'],
+            'email' => ['sometimes','required' ,'email','max:255' , Rule::unique('admins')->ignore($this->admin)],
+            'image' => ['sometimes','nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'mobile' => ['nullable','string', 'min:9' ,'max:14', Rule::unique('admins')->ignore($this->admin)],  //'regex:/^(009665|9665|\+9665|05|5)([013456789])([0-9]{7})$/' , =>(009665|9665|\+9665|05|5)  ((5|0|3|6|4|9|1|8|7)مفتاح الشركه) (خانات)
+            'status' => ['sometimes','required', Rule::in(['مفعل' , 'غير مفعل'])] ,
+            'roles_name' => ['sometimes','required','array']
+        ];
     }
     public function messages()
     {

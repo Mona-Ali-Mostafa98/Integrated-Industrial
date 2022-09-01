@@ -38,6 +38,7 @@ class User extends Authenticatable
     // return complete profile_image_url of profile_image in api request to use it in mobile app
     protected $appends = [
         'profile_image_url',
+        'full_name'
     ];
 
     public function country()
@@ -62,6 +63,11 @@ class User extends Authenticatable
         return "$this->first_name". " " ."$this->last_name" ;
     }
 
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -71,6 +77,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at' , 'updated_at',
         'profile_image',   //hidden image and replace it with complete profile_image_url
     ];
 

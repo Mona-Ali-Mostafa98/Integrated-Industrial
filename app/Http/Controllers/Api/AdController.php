@@ -22,7 +22,7 @@ class AdController extends Controller
 
     public function index()
     {
-        $ads = Ad::with('images' , 'user:id' , 'category:id,category_name,category_image' ,
+        $ads = Ad::with('images' , 'user:id,first_name,last_name,profile_image' , 'category:id,category_name,category_image' ,
                         'city:id,city_name' , 'region:id,region_name' ,
                         'sub_category:id,category_name,category_image' , 'model')
                         ->paginate();

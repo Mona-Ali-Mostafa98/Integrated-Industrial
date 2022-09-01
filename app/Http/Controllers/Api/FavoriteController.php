@@ -9,7 +9,23 @@ use Illuminate\Http\Request;
 class FavoriteController extends Controller
 {
 
-public function store(Request $request)
+    // return list of Favorite Ads of Auth User
+    public function index()
+    {
+        $user_favorites = Favorite::where('user_id', auth()->guard('sanctum')->user()->id)
+                            ->withWhereHas('ad',function($q){
+                                $q->select('id','city_id')->with('city:id,city_name');
+                            })->with('user:id,first_name,last_name,profile_image')->get();
+
+        return  response()->json([
+            'user_favorites' => $user_favorites,
+        ] , 201) ;
+
+    }
+
+
+
+    public function store(Request $request)
     {
         $data = request()->validate([
             'ad_id' => 'required|exists:ads,id'
@@ -28,4 +44,6 @@ public function store(Request $request)
             'favorite' => $favorite->load('user:id,first_name,last_name,profile_image' , 'ad')
         ] , 201) ;
     }
+
+
 }

@@ -129,7 +129,7 @@
             class="form-control mb-3 @error('image') is-invalid @enderror"
             onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])" multiple>
         @foreach ($ad->images as $value)
-            <img src="{{ asset('storage/ad_images/' . $value->image) }}" style="height: 80px; width: 100px;">
+            <img src="{{ $value->image_url }}" style="height: 80px; width: 100px;">
         @endforeach
         @error('image')
             <p class="text-danger">{{ $message }}</p>

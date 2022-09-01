@@ -29,8 +29,7 @@
                                 <div class="row mb-4">
                                     <div class="col-lg-3 col-md-4 label text-success fw-bold">صور الأعلان</div>
                                     @foreach ($ad->images as $value)
-                                        <img src="{{ asset('storage/ad_images/' . $value->image) }}"
-                                            style="height: 100px; width: 150px;">
+                                        <img src="{{ $value->image_url }}" style="height: 100px; width: 150px;">
                                     @endforeach
                                 </div>
 

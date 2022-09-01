@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
             if ($request->is('api/*')) {
                 return response()->json([
                     "status" => "400  Not Found",
-                    'message' => 'هذا الأعلان غير موجود.'
+                    'message' => 'غير موجود فى قاعدة البيانات .'
                 ], 404);
             }
         });

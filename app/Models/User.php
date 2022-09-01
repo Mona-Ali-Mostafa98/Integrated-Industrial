@@ -77,7 +77,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'created_at' , 'updated_at',
+        'created_at' , 'updated_at' , 'first_name' , 'last_name',
         'profile_image',   //hidden image and replace it with complete profile_image_url
     ];
 

@@ -25,7 +25,7 @@ class StoreAdRequest extends FormRequest
     {
         return [
             'category_id' => ['required','exists:categories,id'],
-            'user_id' => ['required','exists:users,id'],
+            // 'user_id' => ['required','exists:users,id'],
             'city_id' => ['required','exists:cities,id'],
             'region_id' => ['required','exists:regions,id'],
             'subcategory_id' => ['required','exists:categories,id'],

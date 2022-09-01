@@ -18,10 +18,12 @@ return new class extends Migration
             $table->text('user_reply');
 		    $table->foreignId('user_id')
                     ->constrained('users')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
 		    $table->foreignId('question_id')
                     ->constrained('questions')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
 

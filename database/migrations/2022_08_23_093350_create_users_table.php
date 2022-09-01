@@ -23,10 +23,12 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('country_id')
                     ->constrained('countries')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->foreignId('city_id')
                     ->constrained('cities')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->text('address')->nullable();

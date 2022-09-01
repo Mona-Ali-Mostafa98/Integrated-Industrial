@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')
                     ->constrained('users')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->foreignId('ad_id')
                     ->constrained('ads')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->enum('status', ['خطأ فى السعر', 'أعلان غير لائق', 'أعلان غير  مناسب' , 'أحتيال']);

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('user_question');
 		    $table->foreignId('user_id')
                     ->constrained('users')
+                    ->references('id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
 

@@ -7,9 +7,11 @@ use App\Http\Requests\StoreAdRequest;
 use App\Http\Requests\UpdateAdRequest;
 use App\Models\Ad;
 use App\Models\AdImage;
+use App\Notifications\AdNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Throwable;
 
 class AdController extends Controller
@@ -54,6 +56,9 @@ class AdController extends Controller
                     ]);
                 }
             }
+
+            $user = auth()->guard('sanctum')->user();
+            Notification::send($user, new AdNotification($ad));
 
             DB::commit();
 

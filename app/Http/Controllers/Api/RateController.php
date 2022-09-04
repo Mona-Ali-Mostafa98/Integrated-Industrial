@@ -10,6 +10,28 @@ use Illuminate\Validation\Rule;
 class RateController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum'])->except('store','index');
+    }
+
+
+    public function index()
+    {
+        $user = auth()->guard('sanctum')->user() ;
+        $user_rates = Rate::where('user_id', $user->id)
+                            ->withWhereHas('ad',function($q){
+                                $q->select('id','city_id')->with('city:id,city_name');
+                            })->with('user:id,first_name,last_name,profile_image')->get();
+
+        return  response()->json([
+            'user_rates' => $user_rates,
+        ] , 201) ;
+
+    }
+
+
+
     public function store(Request $request)
     {
         $data = request()->validate([
@@ -37,3 +59,4 @@ class RateController extends Controller
     }
 
 }
+

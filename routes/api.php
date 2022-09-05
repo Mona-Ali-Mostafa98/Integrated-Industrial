@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ComplainController;
@@ -83,11 +84,13 @@ Route::get('send-notification' , [NotificationController::class , 'notifications
 Route::get('user/activation/{token}', [UserController::class , 'userActivation']);
 
 
-Route::post('messages', [ChatController::class, 'message'])->middleware('auth:sanctum');
-
-
 Route::post('send_token_to_reset_password',[PasswordController::class,'sendResetToken']);
 Route::post('verify_from_token_sent/{token}',[PasswordController::class,'verifyFromTokenSent']);
 Route::post('reset_password',[PasswordController::class,'resetPassword']);
 
 Route::post('change_password', [PasswordController::class, 'changePassword'])->middleware('auth:sanctum');
+
+
+Route::post('send_message', [ChatController::class, 'send_message'])->middleware('auth:sanctum');
+Route::get('user_rooms', [ChatController::class, 'userRooms'])->middleware('auth:sanctum');
+Route::get('chat_in_room/{to_user_id}', [ChatController::class, 'chatsInRoom'])->middleware('auth:sanctum');

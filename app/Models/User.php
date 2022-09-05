@@ -59,6 +59,27 @@ class User extends Authenticatable  implements MustVerifyEmail
     }
 
 
+
+    public function rooms()
+    {
+        return $this->HasMany(Room::class, 'room_id', 'id');
+    }
+
+
+
+    public function chats_sent()
+    {
+        return $this->hasMany(Chat::class , 'from_user_id', 'id');
+    }
+
+
+    public function chats_receive()
+    {
+        return $this->hasMany(Chat::class, 'to_user_id', 'id');
+    }
+
+
+
     // add accessor to model user to return full name
     public function getFullNameAttribute()
     {
